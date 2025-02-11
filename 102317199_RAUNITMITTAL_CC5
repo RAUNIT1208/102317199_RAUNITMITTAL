@@ -1,0 +1,114 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Question 1
+gfg = np.matrix('[4, 1, 9; 12, 3, 1; 4, 5, 6]')
+
+# i. Sum of all elements
+sum_all_elements = np.sum(gfg)
+print("Sum of all elements:", sum_all_elements)
+
+# ii. Sum of all elements row-wise
+row_sum = np.sum(gfg, axis=1)
+print("Row-wise sum of elements:", row_sum)
+
+# iii. Sum of all elements column-wise
+col_sum = np.sum(gfg, axis=0)
+print("Column-wise sum of elements:", col_sum)
+
+# Question 2
+array_1 = np.array([10, 52, 62, 16, 16, 54, 453])
+array_2 = np.array([1.0, 1.2, 2.2, 2.0, 3.0, 2.0])
+
+# (a) i. Sorted array
+sorted_array = np.sort(array_1)
+print("Sorted array:", sorted_array)
+
+# (a) ii. Indices of sorted array
+sorted_indices = np.argsort(array_1)
+print("Indices of sorted array:", sorted_indices)
+
+# (a) iii. 4 smallest elements
+smallest_4 = np.sort(array_1)[:4]
+print("4 smallest elements:", smallest_4)
+
+# (a) iv. 5 largest elements
+largest_5 = np.sort(array_1)[-5:]
+print("5 largest elements:", largest_5)
+
+# (b) i. Integer elements only
+integer_elements = array_2[array_2 == array_2.astype(int)]
+print("Integer elements:", integer_elements)
+
+# (b) ii. Float elements only
+float_elements = array_2[array_2 != array_2.astype(int)]
+print("Float elements:", float_elements)
+
+# Question 3
+# a) Generate unique sales dataset
+first_name_initial = ord('A')  # Replace with your first initial if different
+last_name_initial = ord('B')  # Replace with your last initial if different
+X = first_name_initial + last_name_initial
+sales = np.array([X, X + 50, X + 100, X + 150, X + 200])
+print("Sales array:", sales)
+
+# b) Compute personalized tax rate
+tax_rate = ((X % 5) + 5) / 100
+sales_taxed = sales * (1 + tax_rate)
+print("Sales after applying tax:", sales_taxed)
+
+# c) Adjust sales based on discount
+discounted_sales = np.where(sales < X + 100, sales * 0.95, sales * 0.90)
+print("Discounted sales:", discounted_sales)
+
+# d) Expand sales data for multiple weeks
+weeks_sales = np.tile(sales, (3, 1))
+week_adjusted_sales = weeks_sales * (1 + np.arange(3).reshape(3, 1) * 0.02)
+print("Weekly sales with 2% increase per week:\n", week_adjusted_sales)
+
+# Question 4
+x_values = np.linspace(-10, 10, 100)
+
+# Plot Y = x^2
+y_square = x_values ** 2
+plt.figure(figsize=(10, 6))
+plt.plot(x_values, y_square, label='Y = x^2')
+plt.title('Plot of Y = x^2')
+plt.xlabel('X Values')
+plt.ylabel('Y Values')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Plot Y = sin(x)
+y_sin = np.sin(x_values)
+plt.figure(figsize=(10, 6))
+plt.plot(x_values, y_sin, label='Y = sin(x)')
+plt.title('Plot of Y = sin(x)')
+plt.xlabel('X Values')
+plt.ylabel('Y Values')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Plot Y = e^x
+y_exp = np.exp(x_values)
+plt.figure(figsize=(10, 6))
+plt.plot(x_values, y_exp, label='Y = e^x')
+plt.title('Plot of Y = e^x')
+plt.xlabel('X Values')
+plt.ylabel('Y Values')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Plot Y = log(|x| + 1)
+y_log = np.log(np.abs(x_values) + 1)
+plt.figure(figsize=(10, 6))
+plt.plot(x_values, y_log, label='Y = log(|x| + 1)')
+plt.title('Plot of Y = log(|x| + 1)')
+plt.xlabel('X Values')
+plt.ylabel('Y Values')
+plt.grid(True)
+plt.legend()
+plt.show()
